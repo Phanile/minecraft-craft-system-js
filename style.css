@@ -1,19 +1,72 @@
-.craft-img-main {
-    display: block;
-    margin: 0 auto;
+.hide {
+    opacity: 0;
 }
 
-.hide {
-    display: none;
+.craftTable{
+    width: 583px;
+    height: 250px;
+    margin: 100px auto;
+    padding: 67px 0 16px 21px;
+    display: flex;
+    justify-content: space-between;
+    background-size: 600px;
+    background-image: url('images/Crafting3x3.png');
+}
+
+.craft{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 250px;
+}
+
+.result{
+    height: 100%;
+    width: 250px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-right: 38px;
+}
+
+.row{
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .cell {
-    background-color: aqua;
     width: 70px;
     height: 70px;
-    margin: 10px auto;
 }
 
-#cell-1 {
-    
+.items{
+    width: 820px;
+    height: 91px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url('images/inventoryBar.png');
+    background-size: cover;
+    margin-bottom: 100px;
+}
+
+.item{
+    width: 65px;
+    height: 65px;
+    padding: 2.5px;
+    background-size: cover;
+    cursor: grab;
+}
+
+#diamond{
+    background-image: url('images/diamond.png');
+}
+#pickaxe{
+    background-image: url('images/pick.png');
+}
+#stick{
+    background-image: url('images/stick.png');
 }

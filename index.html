@@ -6,21 +6,38 @@
     <body>
         <script src="scripts/main.js"></script>
         <script src="scripts/itemsConfig.js"></script>
-        <div>
-            <img src="images/Crafting3x3.png" width="500px" height="300px" class="craft-img-main">
-            <div id="cell-1" class="cell" data-id="1"></div>
-            <div id="cell-2" class="cell" data-id="2"></div>
-            <div id="cell-3" class="cell" data-id="3"></div>
-            <div id="cell-4" class="cell" data-id="4"></div>
-            <div id="cell-5" class="cell" data-id="5"></div>
-            <div id="cell-6" class="cell" data-id="6"></div>
-            <div id="cell-7" class="cell" data-id="7"></div>
-            <div id="cell-8" class="cell" data-id="8"></div>
-            <div id="cell-9" class="cell" data-id="9"></div>
-            <div id="cell-10" class="cell" data-id="10"></div>
+        <div class="craftTable">
+            <div class="craft">
+                <div class="row">
+                    <div class="cell" data-id="1"></div>
+                    <div class="cell" data-id="2"></div>
+                    <div class="cell" data-id="3"></div>
+                </div>
+                <div class="row">
+                    <div class="cell" data-id="4"></div>
+                    <div class="cell" data-id="5"></div>
+                    <div class="cell" data-id="6"></div>
+                </div>
+                <div class="row">
+                    <div class="cell" data-id="7"></div>
+                    <div class="cell" data-id="8"></div>
+                    <div class="cell" data-id="9"></div>
+                </div>
+            </div>
+            <div class="result">
+                <div class="cell" data-id="10"></div>
+            </div>
         </div>
-        <img src="images/diamond.png" width="65px" height="65px" class="item abstarct-diamond" draggable="true">               
-        <img src="images/stick.png" width="65px" height="65px" class="item abstarct-stick" draggable="true">               
-        <img src="images/pick.png" width="65px" height="65px" class="item abstarct-pick" draggable="true">              
+        <div class="items">
+            <div id="diamond" class="item" draggable="true"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div id="stick" class="item" draggable="true"></div>
+            <div id="pickaxe" class="item" draggable="true"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
     </body>
 </html>

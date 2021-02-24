@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     const cards = document.getElementsByClassName('item')
     const cells = document.getElementsByClassName('cell')
+    const items = document.getElementsByClassName('items')[0]
 
     let currentCard = null
+    let filler = document.createElement('div');
+    filler.classList.add('item')
 
     const dragStart = function()
     {
@@ -15,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const dragEnd = function()
     {
         this.classList.remove('hide')
-        currentCard = null
     }
 
     const dragOver = function(event)
@@ -26,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dragDrop = function()
     {
         this.append(currentCard)
+        items.appendChild(filler)
     }
 
     for (var card of cards)
