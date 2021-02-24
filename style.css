@@ -1,0 +1,19 @@
+.craft-img-main {
+    display: block;
+    margin: 0 auto;
+}
+
+.hide {
+    display: none;
+}
+
+.cell {
+    background-color: aqua;
+    width: 70px;
+    height: 70px;
+    margin: 10px auto;
+}
+
+#cell-1 {
+    
+}
