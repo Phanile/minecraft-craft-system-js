@@ -13,7 +13,7 @@
     background-image: url('images/Crafting3x3.png');
 }
 
-.craft{
+.craftArea{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -24,7 +24,7 @@
     height: 100%;
     width: 250px;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     margin-right: 38px;
 }
@@ -59,14 +59,4 @@
     padding: 2.5px;
     background-size: cover;
     cursor: grab;
-}
-
-#diamond{
-    background-image: url('images/diamond.png');
-}
-#pickaxe{
-    background-image: url('images/pick.png');
-}
-#stick{
-    background-image: url('images/stick.png');
 }

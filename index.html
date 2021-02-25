@@ -7,37 +7,53 @@
         <script src="scripts/main.js"></script>
         <script src="scripts/itemsConfig.js"></script>
         <div class="craftTable">
-            <div class="craft">
+            <div class="craftArea">
                 <div class="row">
-                    <div class="cell" data-id="1"></div>
-                    <div class="cell" data-id="2"></div>
-                    <div class="cell" data-id="3"></div>
+                    <div class="cell empty craft" data-id="1" data-itemId="0"></div>
+                    <div class="cell empty craft" data-id="2" data-itemId="0"></div>
+                    <div class="cell empty craft" data-id="3" data-itemId="0"></div>
                 </div>
                 <div class="row">
-                    <div class="cell" data-id="4"></div>
-                    <div class="cell" data-id="5"></div>
-                    <div class="cell" data-id="6"></div>
+                    <div class="cell empty craft" data-id="4" data-itemId="0"></div>
+                    <div class="cell empty craft" data-id="5" data-itemId="0"></div>
+                    <div class="cell empty craft" data-id="6" data-itemId="0"></div>
                 </div>
                 <div class="row">
-                    <div class="cell" data-id="7"></div>
-                    <div class="cell" data-id="8"></div>
-                    <div class="cell" data-id="9"></div>
+                    <div class="cell empty craft" data-id="7" data-itemId="0"></div>
+                    <div class="cell empty craft" data-id="8" data-itemId="0"></div>
+                    <div class="cell empty craft" data-id="9" data-itemId="0"></div>
                 </div>
             </div>
             <div class="result">
-                <div class="cell" data-id="10"></div>
+                <div class="cell empty resultCraft" data-id="10" data-itemId="0"></div>
             </div>
         </div>
-        <div class="items">
-            <div id="diamond" class="item" draggable="true"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div id="stick" class="item" draggable="true"></div>
-            <div id="pickaxe" class="item" draggable="true"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
+        <div class="items">  
+            <div class="cell full" data-itemId="0">
+                <div class="item" data-itemId="2" draggable="true" style="background-image: url('images/diamond.png');"></div>
+            </div>
+            <div class="cell full" data-itemId="0">
+                <div class="item" data-itemId="2" draggable="true" style="background-image: url('images/diamond.png');"></div>
+            </div>
+            <div class="cell full" data-itemId="0">
+                <div class="item" data-itemId="1" draggable="true" style="background-image: url('images/stick.png');"></div>
+            </div>
+            <div class="cell full" data-itemId="0">
+                <div class="item" data-itemId="1" draggable="true" style="background-image: url('images/stick.png');"></div>
+            </div>
+            <div class="cell full" data-itemId="0">
+                <div class="item" data-itemId="2" draggable="true" style="background-image: url('images/diamond.png');"></div>
+            </div>
+            <div class="cell full" data-itemId="0">
+                <div class="item" data-itemId="3" draggable="true" style="background-image: url('images/pick.png');"></div>
+            </div>
+            <div class="cell empty" data-itemId="0"></div>
+            <div class="cell full" data-itemId="0">
+                <div class="item" data-itemId="2" draggable="true" style="background-image: url('images/diamond.png');"></div>
+            </div>
+            <div class="cell full" data-itemId="0">
+                <div class="item" data-itemId="2" draggable="true" style="background-image: url('images/diamond.png');"></div>
+            </div>
         </div>
     </body>
 </html>
