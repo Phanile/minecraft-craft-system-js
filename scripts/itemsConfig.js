@@ -37,7 +37,7 @@ const items = [
         'craftItemsConfig' : [
             {
                 'id' : 2,
-                'pos' : [[1, 3, 4, 6]] //, [4, 6, 7, 9]
+                'pos' : [[1, 3, 4, 6], [4, 6, 7, 9]]
             }
         ]
     },
@@ -50,7 +50,24 @@ const items = [
         'craftItemsConfig' : [
             {
                 'id' : 2,
-                'pos' : [[1, 2, 3, 4, 6]] //, [4, 6, 7, 9]
+                'pos' : [[1, 2, 3, 4, 6], [4, 5, 6, 7, 9]]
+            }
+        ]
+    },
+    {
+        'id' : 6,
+        'name' : 'diamond sword',
+        'url' : 'images/diamondSword.png',
+        'isCraftable' : true,
+        'isHomogeneousCraftable' : false,
+        'craftItemsConfig' : [
+            {
+                'id' : 1,
+                'pos' : [[8]]
+            },
+            {
+                'id' : 2,
+                'pos' : [[2, 5]]
             }
         ]
     }

@@ -35,39 +35,72 @@ document.addEventListener("DOMContentLoaded", () => {
         for (item of items) {
             if (item.isCraftable) {
                 if (item.isHomogeneousCraftable) {
-                    let x = item.craftItemsConfig[0]
-                    let itemId = x.id
-                    if (x.pos.length == 1) {
-                        if (compareArrayWithWorkbench(x.pos[0], itemId, item, x.pos[0].length) != null) {
-                            console.log('FIND', item.name, item.id)
+                    for (arr of item.craftItemsConfig[0].pos) {
+                        console.log(arr)
+                        if (compareArrayWithWorkbench(arr, item, item.isHomogeneousCraftable) != null) {
                             createResultCraftItem(item.id)
+                        } 
+                    }   
+                }   
+                else {
+                    let multiArray = []
+                    for (arr of item.craftItemsConfig) {
+                        for (a of arr.pos) {
+                            multiArray.push(a)
                         }
                     }
-                    else {
-                        for (i of x.pos) {
-                            console.log(i)
-                        }
+                    if (compareArrayWithWorkbench(multiArray, item, item.isHomogeneousCraftable) != null) {
+                        createResultCraftItem(item.id)
                     }
-                }
+                } 
             }
         }
     }
 
-    const compareArrayWithWorkbench = (array, itemId, craftItem, countOfItems) => {
-        let compareCount = 0
+    const formDiffrentArray = () => {
+        let ids = []
+        let workbenchArray = []
         for (cell of craftCells) {
-            if (!canDropItemOnCell(cell) && cell.classList.contains('craft')) {
-                if (cell.dataset.itemid == itemId) {
-                    for (let i = 0; i < array.length; i++) {
-                        if (cell.dataset.id == array[i]) {
-                            compareCount += 1
-                        }
-                    }
+            if (cell.classList.contains('full')) {
+                if (!ids.includes(parseInt(cell.dataset.itemid))) {
+                    ids.push(parseInt(cell.dataset.itemid))
                 }
             }
         }
-        if (compareCount == array.length && compareCount == countOfItems) {
-            return craftItem
+        for (id of ids) {
+            let array = []
+            for (cell of craftCells) {
+                if (parseInt(cell.dataset.itemid) == id) {
+                    array.push(parseInt(cell.dataset.id))
+                }
+            }
+            workbenchArray.push(array)
+        }
+        return workbenchArray
+    }
+
+    const formHomogeneousArray = () => {
+        let workbenchArray = []
+        for (cell of craftCells) {
+            if (cell.classList.contains('full')) {
+                workbenchArray.push(parseInt(cell.dataset.id))
+            }
+        }
+        return workbenchArray 
+    }
+
+    const compareArrayWithWorkbench = (array, craftItem, isHomogeneousItem) => {
+        if (isHomogeneousItem) {
+            array.sort()
+            if (formHomogeneousArray().join() == array.join()) {
+                return craftItem
+            }
+        }
+        else {
+            array.sort()
+            if (JSON.stringify(array) === JSON.stringify(formDiffrentArray())) {
+                return craftItem
+            }
         }
         return null
     }
@@ -86,9 +119,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 cell.classList.remove('full')
                 cell.classList.add('empty')
             }
+            clearCellItemId(cell)
         }
         resultCell.classList.remove('full')
         resultCell.classList.add('empty')
+        clearCellItemId(resultCell)
+    }
+
+    const clearResultCell = () => {
+        resultCell.innerHTML = ``
+        if (resultCell.classList.contains('full')) {
+            resultCell.classList.remove('full')
+            resultCell.classList.add('empty')
+        }
     }
 
     const dragDrop = function() {
@@ -97,7 +140,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let lastCell = currentCard.parentNode
         if (lastCell.classList.contains('resultCraft')) {
             clearWorkbench()
-        }  
+        }
+        clearResultCell()
         changeCellProperty(lastCell)
         changeCellProperty(this)
         clearCellItemId(lastCell)
@@ -110,7 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             this.classList.add('hide')
             currentCard = this
-            console.log(currentCard)
         })
     }
 
