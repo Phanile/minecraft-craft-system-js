@@ -31,35 +31,28 @@ document.addEventListener("DOMContentLoaded", () => {
         cell.dataset.itemid = 0
     }
 
-    const findCraft = () => {
+    const findCraft = () => {      
         for (item of items) {
             if (item.isCraftable) {
-                if (item.isHomogeneousCraftable) {
-                    for (arr of item.craftItemsConfig[0].pos) {
-                        console.log(arr)
-                        if (compareArrayWithWorkbench(arr, item, item.isHomogeneousCraftable) != null) {
-                            createResultCraftItem(item.id)
-                        } 
-                    }   
-                }   
-                else {
-                    let multiArray = []
-                    for (arr of item.craftItemsConfig) {
-                        for (a of arr.pos) {
-                            multiArray.push(a)
-                        }
-                    }
-                    if (compareArrayWithWorkbench(multiArray, item, item.isHomogeneousCraftable) != null) {
-                        createResultCraftItem(item.id)
-                    }
-                } 
+                if (compareArrayWithWorkbench(item.craftItemsConfig, item) != null) {
+                    createResultCraftItem(item.id)
+                }
             }
         }
     }
 
-    const formDiffrentArray = () => {
-        let ids = []
+    const compareArrayWithWorkbench = (array, craftItem) => {
+        let itemObjectFromWorkbench = formItemArrayFromWorkbench()
+        if (_.isEqual(array, itemObjectFromWorkbench)) {
+            return craftItem
+        }
+        return null
+    }
+
+    const formItemArrayFromWorkbench = () => {
         let workbenchArray = []
+        let ids = []
+
         for (cell of craftCells) {
             if (cell.classList.contains('full')) {
                 if (!ids.includes(parseInt(cell.dataset.itemid))) {
@@ -67,42 +60,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         }
-        for (id of ids) {
-            let array = []
+
+        for (i = 0; i < ids.length; i++) {
+            let item = {
+                id : parseInt(ids[i]),
+                pos : []
+            }
             for (cell of craftCells) {
-                if (parseInt(cell.dataset.itemid) == id) {
-                    array.push(parseInt(cell.dataset.id))
+                if (cell.classList.contains('full') && cell.dataset.itemid == ids[i]) {
+                    item.pos.push(parseInt(cell.dataset.id))
                 }
             }
-            workbenchArray.push(array)
+            workbenchArray.push(item)
         }
-        return workbenchArray
-    }
-
-    const formHomogeneousArray = () => {
-        let workbenchArray = []
-        for (cell of craftCells) {
-            if (cell.classList.contains('full')) {
-                workbenchArray.push(parseInt(cell.dataset.id))
-            }
-        }
-        return workbenchArray 
-    }
-
-    const compareArrayWithWorkbench = (array, craftItem, isHomogeneousItem) => {
-        if (isHomogeneousItem) {
-            array.sort()
-            if (formHomogeneousArray().join() == array.join()) {
-                return craftItem
-            }
-        }
-        else {
-            array.sort()
-            if (JSON.stringify(array) === JSON.stringify(formDiffrentArray())) {
-                return craftItem
-            }
-        }
-        return null
+        return workbenchArray.sort().reverse()
     }
 
     const createResultCraftItem = (id) => {

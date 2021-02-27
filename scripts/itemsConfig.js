@@ -20,11 +20,11 @@ const items = [
         'craftItemsConfig' : [
             {
                 'id' : 1,
-                'pos' : [[5, 8]]
+                'pos' : [5, 8]
             },
             {
                 'id' : 2,
-                'pos' : [[1, 2, 3]]
+                'pos' : [1, 2, 3]
             }
         ]
     },
@@ -37,7 +37,7 @@ const items = [
         'craftItemsConfig' : [
             {
                 'id' : 2,
-                'pos' : [[1, 3, 4, 6], [4, 6, 7, 9]]
+                'pos' : [1, 3, 4, 6]
             }
         ]
     },
@@ -50,7 +50,7 @@ const items = [
         'craftItemsConfig' : [
             {
                 'id' : 2,
-                'pos' : [[1, 2, 3, 4, 6], [4, 5, 6, 7, 9]]
+                'pos' : [1, 2, 3, 4, 6]
             }
         ]
     },
@@ -63,11 +63,11 @@ const items = [
         'craftItemsConfig' : [
             {
                 'id' : 1,
-                'pos' : [[8]]
+                'pos' : [8]
             },
             {
                 'id' : 2,
-                'pos' : [[2, 5]]
+                'pos' : [2, 5]
             }
         ]
     }
