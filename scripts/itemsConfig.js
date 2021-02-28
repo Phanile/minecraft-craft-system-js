@@ -1,3 +1,4 @@
+const startItemsIds = [3, 4]
 const items = [
     {
         'id' : 1,
@@ -16,7 +17,6 @@ const items = [
         'name' : 'diamond pick',
         'url' : 'images/pick.png',
         'isCraftable' : true,
-        'isHomogeneousCraftable' : false,
         'craftItemsConfig' : [
             {
                 'id' : 1,
@@ -33,7 +33,6 @@ const items = [
         'name' : 'diamond boots',
         'url' : 'images/diamondBoots.png',
         'isCraftable' : true,
-        'isHomogeneousCraftable' : true,
         'craftItemsConfig' : [
             {
                 'id' : 2,
@@ -46,7 +45,6 @@ const items = [
         'name' : 'diamond helmet',
         'url' : 'images/diamondHelmet.png',
         'isCraftable' : true,
-        'isHomogeneousCraftable' : true,
         'craftItemsConfig' : [
             {
                 'id' : 2,
@@ -59,7 +57,6 @@ const items = [
         'name' : 'diamond sword',
         'url' : 'images/diamondSword.png',
         'isCraftable' : true,
-        'isHomogeneousCraftable' : false,
         'craftItemsConfig' : [
             {
                 'id' : 1,
@@ -70,15 +67,17 @@ const items = [
                 'pos' : [2, 5]
             }
         ]
+    },
+    {
+        'id' : 7,
+        'name' : 'sticks for food',
+        'url' : 'images/sticks.png',
+        'isCraftable' : true,
+        'craftItemsConfig' : [
+            {
+                'id' : 1,
+                'pos' : [2, 4]
+            }
+        ]
     }
 ]
-
-const createItem = (id) => {
-    let item = items[id - 1]
-    let div = document.createElement('div')
-    div.className = 'item'
-    div.setAttribute('data-ItemId', `${item.id}`)
-    div.setAttribute('draggable', 'true')
-    div.style.backgroundImage = `url('${item.url}')`
-    return div
-}

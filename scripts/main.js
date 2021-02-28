@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.getElementsByClassName('item')
     const cells = document.getElementsByClassName('cell')
     const craftCells = document.getElementsByClassName('craft')
     const resultCell = document.getElementsByClassName('resultCraft')[0]
+    const inventory = document.getElementsByClassName('items')[0]
 
     let currentCard = null
     
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const canDropItemOnCell = (cell) => {
         if (cell.classList.contains('empty') && !cell.classList.contains('resultCraft')) return true
-        else return false
+        return false
     }
 
     const changeItemIdOnCell = (cell, item) => {
@@ -78,9 +78,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const createResultCraftItem = (id) => {
         item = createItem(id)
-        AddListenersToCard(item)
+        AddListenersToItem(item)
         resultCell.append(item)
         changeCellProperty(resultCell)
+    }
+
+    const createItem = (id) => {
+        let item = items[id - 1]
+        let div = document.createElement('div')
+        div.className = 'item'
+        div.setAttribute('data-ItemId', `${item.id}`)
+        div.setAttribute('draggable', 'true')
+        div.style.backgroundImage = `url('${item.url}')`
+        return div
+    }
+
+    const createCell = (isFull) => {
+        let div = document.createElement('div')
+        if (isFull) div.className = 'cell full inventory'
+        else div.className = 'cell empty inventory'
+        return div
+    }
+
+    const createStartItemsInInventory = () => {
+        diff = 9 - startItemsIds.length
+        for (itemId of startItemsIds) {
+            cell = createCell(true)
+            item = createItem(itemId)
+            cell.append(item)
+            cell.setAttribute('data-ItemId', `${itemId}`)
+            AddListenersToItem(item)
+            AddListenersToCell(cell)
+            inventory.append(cell)
+        }
+        if (diff > 0) {
+            for (i = 0; i < diff; i++) {
+                cell = createCell(false)
+                cell.setAttribute('data-ItemId', `0`)
+                AddListenersToCell(cell)
+                inventory.append(cell)
+            }
+        }
     }
 
     const clearWorkbench = () => {
@@ -136,18 +174,20 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault()
     }
 
-    const AddListenersToCard = (card) => {
-        card.addEventListener('dragstart', dragStart)
-        card.addEventListener('dragend', dragEnd)
+    const AddListenersToItem = (item) => {
+        item.addEventListener('dragstart', dragStart)
+        item.addEventListener('dragend', dragEnd)
     }
 
-    for (var card of cards) {
-        AddListenersToCard(card)
-    }
-
-    for (var cell of cells) {
+    const AddListenersToCell = (cell) => {
         cell.addEventListener('dragover', dragOver)
         cell.addEventListener('drop', dragDrop)
     }
+
+    for (var cell of cells) {
+        AddListenersToCell(cell)
+    }
+
+    createStartItemsInInventory()
 })
 
