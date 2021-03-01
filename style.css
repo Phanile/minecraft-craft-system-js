@@ -1,3 +1,7 @@
+body{
+    background-color: #C6C6C6;
+}
+
 .hide {
     opacity: 0;
 }
@@ -50,7 +54,6 @@
     align-items: center;
     background-image: url('images/inventoryBar.png');
     background-size: cover;
-    margin-bottom: 100px;
 }
 
 .item{
@@ -59,4 +62,22 @@
     padding: 2.5px;
     background-size: cover;
     cursor: grab;
+}
+
+.man{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+}
+
+.form div{
+    margin: 0 12px;
 }

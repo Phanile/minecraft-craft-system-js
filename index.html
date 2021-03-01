@@ -1,37 +1,84 @@
 <html>
     <head>
         <title>Craft System</title>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <script src="scripts/main.js"></script>
-        <script src="scripts/itemsConfig.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-
         <div class="craftTable">
             <div class="craftArea">
                 <div class="row">
-                    <div class="cell empty craft" data-id="1" data-itemId="0"></div>
-                    <div class="cell empty craft" data-id="2" data-itemId="0"></div>
-                    <div class="cell empty craft" data-id="3" data-itemId="0"></div>
+                    <div class="cell empty craft" data-itemId="0"></div>
+                    <div class="cell empty craft" data-itemId="0"></div>
+                    <div class="cell empty craft" data-itemId="0"></div>
                 </div>
                 <div class="row">
-                    <div class="cell empty craft" data-id="4" data-itemId="0"></div>
-                    <div class="cell empty craft" data-id="5" data-itemId="0"></div>
-                    <div class="cell empty craft" data-id="6" data-itemId="0"></div>
+                    <div class="cell empty craft" data-itemId="0"></div>
+                    <div class="cell empty craft" data-itemId="0"></div>
+                    <div class="cell empty craft" data-itemId="0"></div>
                 </div>
                 <div class="row">
-                    <div class="cell empty craft" data-id="7" data-itemId="0"></div>
-                    <div class="cell empty craft" data-id="8" data-itemId="0"></div>
-                    <div class="cell empty craft" data-id="9" data-itemId="0"></div>
+                    <div class="cell empty craft" data-itemId="0"></div>
+                    <div class="cell empty craft" data-itemId="0"></div>
+                    <div class="cell empty craft" data-itemId="0"></div>
                 </div>
             </div>
             <div class="result">
                 <div class="cell empty resultCraft" data-id="10" data-itemId="0"></div>
             </div>
         </div>
-        <div class="items">
-            
+        <div class="man">
+            <div class="items">
+                <div class="cell empty inventory" data-itemId="0"></div>
+                <div class="cell empty inventory" data-itemId="0"></div>
+                <div class="cell empty inventory" data-itemId="0"></div>
+                <div class="cell empty inventory" data-itemId="0"></div>
+                <div class="cell empty inventory" data-itemId="0"></div>
+                <div class="cell empty inventory" data-itemId="0"></div>
+                <div class="cell empty inventory" data-itemId="0"></div>
+                <div class="cell empty inventory" data-itemId="0"></div>
+                <div class="cell empty inventory" data-itemId="0"></div>
+            </div>
+            <form onsubmit="return validate(this);" class="form">
+                <div>
+                    <label for="id">Item ID:</label>
+                    <input type="text" id="id"/>
+                </div>
+                <div>
+                    <label for="amount">Items amount:</label>
+                    <input type="text" id="amount"/>
+                </div>
+                <div>
+                    <button type="submit">Get item</button>
+                </div>
+            </form>
         </div>
+
+
+        <script src="scripts/itemsConfig.js"></script>
+        <script src="scripts/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+        <script>
+            function validate(form) {
+                id = +form.id.value
+                amount = +form.amount.value
+                c = 0
+
+                for (cell of inventoryCells){
+                    if (c < amount){
+                        if (cell.classList.contains('empty')){
+                            cell.append(createItem(id))
+                            cell.classList.add('full')
+                            cell.classList.remove('empty')
+                            c++
+                        }
+                    } else{
+                        break
+                    }
+                }
+
+                return false;
+            }
+        </script>
     </body>
 </html>
